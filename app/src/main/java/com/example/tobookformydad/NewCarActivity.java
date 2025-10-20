@@ -31,7 +31,9 @@ public class NewCarActivity extends AppCompatActivity {
     }
 
     public void save(View view) {
-        getIntent().putExtra("name", editText.getText());
+        Intent resultIntent = new Intent();
+        resultIntent.putExtra("name", editText.getText());
+        setResult(RESULT_OK, resultIntent);
         finish();
     }
 }

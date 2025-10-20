@@ -11,6 +11,7 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
@@ -45,8 +46,14 @@ public class CarsActivity extends AppCompatActivity {
     }
     public void addNewCar(View view) {
         Intent intent = new Intent(this, NewCarActivity.class);
-        startActivity(intent);
-        userCars.add(intent.getStringExtra("name"));
+        startActivityForResult(intent, RESULT_OK);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        userCars.add(data.getStringExtra("name"));
         updateListView();
     }
 
