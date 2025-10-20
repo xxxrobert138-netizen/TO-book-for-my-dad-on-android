@@ -1,6 +1,7 @@
 package com.example.tobookformydad;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -21,7 +22,6 @@ import java.util.List;
 public class CarsActivity extends AppCompatActivity {
 
     private List<String> userCars = new ArrayList<>();
-
     private ListView listView;
 
     @Override
@@ -43,9 +43,10 @@ public class CarsActivity extends AppCompatActivity {
 
         listView.setAdapter(arrayAdapter);
     }
-
     public void addNewCar(View view) {
-        userCars.add("Hello");
+        Intent intent = new Intent(this, NewCarActivity.class);
+        startActivity(intent);
+        userCars.add(intent.getStringExtra("name"));
         updateListView();
     }
 
